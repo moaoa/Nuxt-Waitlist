@@ -66,13 +66,12 @@ const joinWaitlist = async () => {
             {{ error.path.join(',') }}: {{ error.message }}
           </p>
 
-          <Transition enter-from-class="opacity-0 translate-y-full"
-            enter-active-class="transition ease-in-out duration-150" enter-to-class="opacity-100 translate-y-0"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-active-class="transition -translate-y-full ease-out duration-150" leave-to-class="opacity-0">
+          <Transition enter-from-class="opacity-0" enter-active-class="transition ease-in-out duration-200"
+            enter-to-class="opacity-100" leave-from-class="opacity-100"
+            leave-active-class="transition ease-out duration-200" leave-to-class="opacity-0">
             <div v-if="success"
-              class="absolute border inset-0 border-[#D65320] bg-[#D65320] flex items-center justify-center">
-              <p class="text-center text-white">
+              class="absolute border inset-0 border-indigo-600 bg-indigo-500 rounded-lg flex items-center justify-center">
+              <p class="text-center text-white font-semibold text-2xl">
                 🫡 We'll keep you posted!
               </p>
             </div>

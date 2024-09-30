@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     "/api/join-waitlist": {
       security: {
         rateLimiter: {
-          tokensPerInterval: 1,
+          tokensPerInterval: 25,
         },
       },
     },
