@@ -7,8 +7,8 @@ export default {
         primary: colors.emerald
       },
       fontFamily: {
-        display: ['Recoleta'],
-        body: ['Work Sans'],
+        display: ['Gabarito'],
+        body: ['Gabarito'],
       },
     }
   },

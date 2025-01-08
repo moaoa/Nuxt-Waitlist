@@ -1,30 +1,16 @@
-import Waitlist from '../Waitlist.vue';
 <template>
-  <div class="h-full max-w-4xl mx-auto text-center">
+  <div class="max-w-4xl mx-auto text-center">
     <span
-      class="inline-flex gap-2 font-body mb-6 items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-      <Icon name="tabler:sailboat-2" />
-      Bootstaped Product
+      class="inline-flex gap-2 mb-6 items-center rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-700/10">
+      <Icon name="tabler:award" />
+      Top Product Of The Year
     </span>
-    <h1 class="font-display font-bold text-5xl max-w-lg mx-auto">Take control of your expenses with <span
-        class="underline decoration-emerald-400">budget</span>
+    <h1 class="font-bold text-6xl max-w-lg tracking-tight mx-auto italic text-neutral-900">Cowards Do That And That Ain't <span
+        class="underline decoration-primary-400">You</span>
     </h1>
-    <p class="font-body mt-8 text-lg text-gray-500 max-w-3xl mx-auto leading-7">
-      Join the waiting list for <span class="underline decoration-emerald-400 decoration-2">Budget</span>, the simple
-      and intuitive
-      app designed to help you track your
-      expenses and take
-      control of your finances.
+    <p class="mt-8 text-lg text-gray-500 max-w-3xl mx-auto leading-7">
+      Join the waiting list for <span class="underline decoration-primary-400 decoration-2">Budget</span>, you're better than that.
     </p>
-    <!-- <p class="font-body mt-8 text-lg text-gray-500 max-w-3xl mx-auto leading-7"> Whether you're managing daily expenses
-      or
-      planning for the future, Budget offers
-      <b>easy-to-use</b> tools to categorize spending, monitor cash flow, and set financial goals—all in one place. Stay
-      organized, gain insights into your spending habits, and start building better money management habits today.
-      <b>Sign
-        up now to be the first to experience Budget when it launches! 👇</b>
-    </p> -->
-    <HomeVideo />
     <MyWaitlist />
   </div>
 </template>

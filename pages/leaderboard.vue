@@ -3,7 +3,7 @@ const { data: users } = await useFetch("/api/anon-list");
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto font-body">
+  <div class="max-w-4xl mx-auto">
     <UCard>
       <template #header>
         <Placeholder class="h-8" />

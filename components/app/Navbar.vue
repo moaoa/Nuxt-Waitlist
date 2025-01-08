@@ -1,14 +1,23 @@
+<script setup lang="ts">
+const mobileMenu = ref();
+const config = useAppConfig();
+
+const toggleMobileMenu = () => {
+  document.body.style.overflow = mobileMenu.value ? "auto" : "hidden";
+  mobileMenu.value = !mobileMenu.value;
+};
+</script>
+
 <template>
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 font-body">
+  <header class="sticky top-0 z-50">
     <UContainer class="mx-auto flex h-16 items-center justify-between px-4 transition-all">
       <div class="flex items-center gap-5">
         <NuxtLink to="/" class="flex items-center gap-2">
-          <Logo class="h-8 w-auto" role="img" alt="Lemonrepo logo" />
-          <p class="font-bold tracking-tight">Budget App</p>
+          <!-- <Logo class="h-8 w-auto" role="img" alt="Lemonrepo logo" /> -->
+          <p class="font-bold text-xl tracking-tight">Techurve</p>
         </NuxtLink>
-        <AppNavbarWhatsNew />
       </div>
-      <div class="hidden items-center gap-2 sm:flex">
+      <div v-if="config.waitlist.showSignups" class="hidden items-center gap-2 sm:flex">
         <UButton to="/leaderboard" color="gray">See Signups</UButton>
       </div>
       <div class="sm:hidden flex items-center gap-2">
@@ -31,14 +40,6 @@
     </div>
   </header>
 </template>
-
-<script setup>
-
-const toggleMobileMenu = () => {
-  document.body.style.overflow = mobileMenu.value ? "auto" : "hidden";
-  mobileMenu.value = !mobileMenu.value;
-};
-</script>
 
 <style scoped>
 .menu-toggle.active .menu-bar[data-position="top"] {

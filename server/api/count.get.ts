@@ -6,5 +6,8 @@ export default defineEventHandler(async (event) => {
     .select({ count: count() })
     .from(tables.waitlist);
 
-  return entry;
+  if (entry.length === 1) {
+    return entry[0];
+  }
+  return null;
 });

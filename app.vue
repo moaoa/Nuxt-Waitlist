@@ -19,12 +19,18 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="px-8 lg:px-0 flex flex-col justify-between min-h-screen bg-grid relative">
-    <div
-      class="absolute inset-0 -z-10 h-full w-full bg-gray-50 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:40px_40px]">
-    </div>
-    <AppNavbar />
-    <NuxtPage />
-    <AppFooter />
-  </div>
+    <UApp>
+        <div class="px-8 lg:px-0 justify-between h-screen relative overflow-hidden">
+            <AppNavbar />
+            <NuxtPage />
+            <AppFooter />
+        </div>
+    </UApp>
 </template>
+
+<style>
+body {
+  background-size: 12px 12px;
+  background-image: radial-gradient(hsla(0,0%,86%,0.3) 1px, transparent 0);
+}
+</style>
