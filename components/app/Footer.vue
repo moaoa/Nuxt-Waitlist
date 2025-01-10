@@ -5,7 +5,7 @@ const config = useAppConfig();
 <template>
   <footer class="">
     <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-      <div class="flex justify-center space-x-6 md:order-2">
+      <div class="flex justify-center gap-6 md:order-2">
         <a v-for="item in config.socials" :href="item.link" class="text-gray-400 hover:text-gray-500">
           <span class="sr-only">twitter</span>
           <Icon :name="item.icon" />
