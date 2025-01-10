@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import * as z from 'zod';
+import { useClipboard, onClickOutside } from '@vueuse/core';
 
 interface WaitlistError {
   code?: string;
@@ -30,6 +31,31 @@ const yourIndex = computed(() => (count.value?.count || 0) + 1);
 const modalOpen = ref(false);
 
 const runtimeConfig = useRuntimeConfig();
+const hovered = ref(false);
+
+const { copy: copyToClipboard } = useClipboard();
+
+const copyButtonRef = ref<HTMLElement>();
+
+const copyState = ref('init');
+
+onClickOutside(copyButtonRef, () => {
+  if (copyState.value === 'copied') {
+    copyState.value = 'init'
+  }
+})
+
+const url = runtimeConfig?.public?.socialShare?.baseUrl || "";
+const copy = (_e: MouseEvent) => {
+  copyToClipboard(url)
+    .then(() => {
+      copyState.value = 'copied'
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-console
+      console.warn("Couldn't copy to clipboard!", err)
+    })
+}
 
 const joinWaitlist = async () => {
   joiningWaitlist.value = true;
@@ -98,7 +124,17 @@ const joinWaitlist = async () => {
           </div>
           <div class="bg-black rounded-full py-2 px-5 text-gray-300 flex items-center gap-2">
             <span>{{ runtimeConfig?.public?.socialShare?.baseUrl }}</span>
-            <Icon name="tabler:copy" class="text-white" />
+            <button ref="copyButtonRef" @click="copy"
+              class="border font-mono rounded-md text-sm border-gray-600 flex gap-2 items-center p-1 transition-all font-medium">
+              <span class="sr-only">Copy to clipboard</span>
+              <span class="icon-wrapper h-[18px] w-[18px] block relative">
+                <Transition name="fade">
+                  <Icon v-if="copyState === 'copied'" name="tabler:copy-check" size="18"
+                    class="copied block absolute" />
+                  <Icon v-else name="tabler:copy" size="18" class="absolute block" />
+                </Transition>
+              </span>
+            </button>
           </div>
         </div>
       </template>
@@ -121,3 +157,15 @@ const joinWaitlist = async () => {
     </p>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0
+}
+</style>
