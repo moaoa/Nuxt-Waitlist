@@ -14,7 +14,7 @@ const toggleMobileMenu = () => {
       <div class="flex items-center gap-5">
         <NuxtLink to="/" class="flex items-center gap-2">
           <!-- <Logo class="h-8 w-auto" role="img" alt="Lemonrepo logo" /> -->
-          <p class="font-bold text-xl tracking-tight">Techurve</p>
+          <p class="font-bold text-xl tracking-tight">Proyecto</p>
         </NuxtLink>
       </div>
       <div v-if="config.waitlist.showSignups" class="hidden items-center gap-2 sm:flex">

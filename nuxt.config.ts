@@ -9,7 +9,11 @@ export default defineNuxtConfig({
     "nuxt-security",
     "@nuxt/fonts",
     "@nuxt/image",
+    "@stefanobartoletti/nuxt-social-share",
   ],
+  socialShare: {
+    baseUrl: 'https://www.yoursite.com'
+  },
   security: {
     headers: {
       contentSecurityPolicy: {

@@ -8,9 +8,9 @@ export default defineAppConfig({
   waitlist: {
     showSignups: false,
   },
-  social: {
-    twitter: "",
-    github: "",
-    youtube: "",
-  }
+  socials: [
+    { icon: "tabler:brand-twitter", link: ""},
+    { icon: "tabler:brand-github", link: ""},
+    { icon: "tabler:brand-youtube", link: ""}
+  ],
 });
