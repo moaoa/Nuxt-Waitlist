@@ -13,10 +13,9 @@ export default defineEventHandler(async event => {
                 })
 
                 return !alreadyExists
-            }, 'Email already in use')
+            }, 'Email is already in use')
         }
     ))
-
 
     consola.info("User joining waitlist...")
 

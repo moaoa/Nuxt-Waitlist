@@ -6,7 +6,6 @@ const { data: users } = await useFetch("/api/anon-list");
   <div class="max-w-4xl mx-auto">
     <UCard>
       <template #header>
-        <Placeholder class="h-8" />
         <h1 class="font-bold text-3xl">Waitlist Leaderboard</h1>
       </template>
 

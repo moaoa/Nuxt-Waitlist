@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import * as z from 'zod'
-import type { FormSubmitEvent } from '#ui/types'
+import * as z from 'zod';
+
+interface WaitlistError {
+  code?: string;
+  message: string;
+  path: string[];
+  validation?: string;
+}
 
 const schema = z.object({
   email: z.string().email('Invalid email'),
@@ -15,11 +21,15 @@ const state = reactive<Partial<Schema>>({
 const email = ref('');
 const joiningWaitlist = ref(false);
 const success = ref(false);
-const errors = ref<{ code: string, message: string, path: string[], validation: string }[]>([]);
+const errors = ref<WaitlistError[]>([]);
 const config = useAppConfig();
+
 const { data: count } = await useFetch('/api/count');
+const yourIndex = computed(() => (count.value?.count || 0) + 1);
 
 const modalOpen = ref(false);
+
+const runtimeConfig = useRuntimeConfig();
 
 const joinWaitlist = async () => {
   joiningWaitlist.value = true;
@@ -28,17 +38,15 @@ const joinWaitlist = async () => {
   try {
     await $fetch('api/join-waitlist', {
       method: 'POST', body: {
-        email: email.value,
+        email: state.email,
       }
     });
 
     email.value = '';
     success.value = true;
-
     modalOpen.value = true;
-
-  } catch (e) {
-    switch (e.response.status) {
+  } catch (e: any) {
+    switch (e?.response?.status) {
       case 400: {
         errors.value = e.data.data.issues
         break;
@@ -67,7 +75,7 @@ const joinWaitlist = async () => {
       </div>
       <div class="mt-6">
         <UButton type="submit"
-          class="flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 transition-all">
+          class="flex w-full cursor-pointer justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 transition-all">
           <span>Sign
             Up</span>
         </UButton>
@@ -78,7 +86,7 @@ const joinWaitlist = async () => {
       </div>
     </UForm>
 
-    <UModal v-model:open="modalOpen" :title="`Thanks! you are number ${count.count + 1} on the waitlist.`"
+    <UModal v-model:open="modalOpen" :title="`Thanks! you are number ${yourIndex} on the waitlist.`"
       description="We'll let you know when we launch.">
 
       <template #body>
@@ -88,9 +96,9 @@ const joinWaitlist = async () => {
             <SocialShare v-for="network in ['facebook', 'x', 'linkedin', 'email']" :key="network" :network="network"
               :styled="true" />
           </div>
-          <div class="bg-black rounded-full py-2 px-5 text-white flex items-center gap-2">
-            <span>{{ config.url }}</span>
-            <Icon name="tabler:copy" />
+          <div class="bg-black rounded-full py-2 px-5 text-gray-300 flex items-center gap-2">
+            <span>{{ runtimeConfig?.public?.socialShare?.baseUrl }}</span>
+            <Icon name="tabler:copy" class="text-white" />
           </div>
         </div>
       </template>
@@ -102,7 +110,7 @@ const joinWaitlist = async () => {
         <UAvatar src="https://i.pravatar.cc/150?img=5" />
         <UAvatar src="https://i.pravatar.cc/150?img=8" />
       </UAvatarGroup>
-      <p class="font-medium text-gray-500 text-sm">Join {{ count.count }}+ others</p>
+      <p class="font-medium text-gray-500 text-sm">Join {{ count?.count || 0 }}+ others</p>
     </div>
     <p class="mt-10 text-center text-sm text-gray-400" v-if="config.waitlist.showSignups">
       Already signed up?

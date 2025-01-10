@@ -25,6 +25,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.2.14",
     "drizzle-kit": "^0.24.2",
     "wrangler": "^3.76.0"
   },

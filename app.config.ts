@@ -6,7 +6,7 @@ export default defineAppConfig({
     }
   },
   waitlist: {
-    showSignups: false,
+    showSignups: true,
   },
   socials: [
     { icon: "tabler:brand-twitter", link: ""},
