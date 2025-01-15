@@ -1,13 +1,10 @@
-# NuxtHubLanding - Landing Page Boilerplate
-The Nuxt boilerplate for building yor landing page in minutes, while deploy it with NuxtHub.
+# NuxtWaitlist - Simple Waitlist Template
 
-> Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![259shots_so](https://github.com/user-attachments/assets/147822de-6884-4e3f-a4fc-ca81cf100cc2)
+
+This is a full stack nuxt waitlist template. It allows you to collect emails of people who are potentially interested in buying your product.
 
 ## Tech Stack
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](https://www.typescriptlang.org/)
-[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-002E3B?logo=nuxtdotjs&logoColor=#00DC82)](https://www.nuxt.com/)
-[![TailwindCSS](https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss)](https://tailwindcss.com/)
-
 - [Typescript](https://www.typescriptlang.org/) - Language
 - [Nuxt.js](https://www.nuxt.com/) - Framework
 - [Drizzle](https://orm.drizzle.team/)  - ORM
@@ -16,12 +13,13 @@ The Nuxt boilerplate for building yor landing page in minutes, while deploy it w
 
 ## Prerequisites
 - [NuxtHub](https://hub.nuxt.com/) Account
+- Cloudflare account
 
 ## Setup
 
 ```bash
 # clone repository
-git clone https://github.com/lowbits/nuxt-hub-landing.git [YOUR_APP_NAME]
+git clone git@github.com:masterkram/Nuxt-Waitlist.git [YOUR_APP_NAME]
 cd [YOUR_APP_NAME]
 
 # npm
@@ -36,6 +34,11 @@ Start the development server on `http://localhost:3000`:
 # npm
 npm run dev
 ```
+
+## Customization
+
+1. edit `app.config.ts`
+2. edit h1 and hero description in `pages/index.vue`
 
 ## Deploy
 
@@ -59,14 +62,4 @@ npx nuxt dev --production
 ```
 
 Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-started/deploy) for more information.
-
-
-## Roadmap
-- [X] Add rate limiting via [NuxtSecurity](https://nuxt-security.vercel.app/documentation/middleware/rate-limiter)
-- [ ] Add Double-Opt-in
-- [ ] Add more basic components
-    - [ ] Faq-Area
-    - [ ] Pricing-Area
-- [ ] Add ability of customisation via config
-- [ ] Add light mode
 
